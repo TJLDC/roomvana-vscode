@@ -1,0 +1,77 @@
+{
+  "name": "roomvana-ai-room-design",
+  "displayName": "Roomvana — AI Room Design",
+  "description": "Send a room photo or floor plan from your workspace to Roomvana and redesign it with AI in your browser.",
+  "version": "0.1.0",
+  "publisher": "roomvana",
+  "license": "MIT",
+  "author": "Roomvana (https://roomvana.ai)",
+  "homepage": "https://roomvana.ai",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TJLDC/roomvana-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/TJLDC/roomvana-vscode/issues"
+  },
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "room design",
+    "interior design",
+    "home design",
+    "ai",
+    "roomvana"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:roomvana.openStudio",
+    "onCommand:roomvana.redesignImage"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "roomvana.openStudio",
+        "title": "Open Roomvana Studio",
+        "category": "Roomvana"
+      },
+      {
+        "command": "roomvana.redesignImage",
+        "title": "Redesign Image with Roomvana",
+        "category": "Roomvana"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "roomvana.redesignImage",
+          "when": "resourceExtname =~ /\\.(png|jpe?g|webp|gif|pdf)$/i && !listMultiSelection",
+          "group": "navigation@100"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "roomvana.openStudio"
+        },
+        {
+          "command": "roomvana.redesignImage"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.5.0"
+  }
+}
